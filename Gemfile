@@ -21,6 +21,7 @@ gem "kaminari"
 gem "mysql2", "~> 0.3.20"
 gem "delayed_job_active_record"
 gem "sidekiq"
+gem "rails_admin"
 gem "whenever", require: false
 
 group :development, :test do
