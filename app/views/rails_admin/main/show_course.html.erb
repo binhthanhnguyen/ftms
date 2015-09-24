@@ -98,10 +98,12 @@
               <td><%= course_subject.subject.name %></td>
               <td>
                 <% if @course.init? %>
-                  <div class="btn btn-success"><%= t "admin.actions.show_course_subject.locked" %></div>
+                  <div class="btn btn-danger">
+                    <%= t "admin.actions.show_course_subject.locked" %>
+                  </div>
                 <% elsif @course.finish? %>
                   <lable class="btn btn-danger">
-                    <%= t("admin.actions.show_course_subject.finished") %>
+                    <%= t "admin.actions.show_course_subject.finished" %>
                   </lable>
                 <% else %>
                   <div class="btn-actions-<%= course_subject.id %>">

@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   enum role: [:admin, :supervisor, :trainee]
 
-  scope :free_trainees, ->{self.trainee.where "id NOT IN (SELECT DISTINCT(user_id) FROM user_courses)"}
+  scope :free_trainees, ->{self.trainee.where "id NOT IN (SELECT user_id
+    FROM user_courses JOIN courses ON user_courses.course_id = courses.id
+    WHERE courses.status = 0 OR courses.status = 1)"}
 
   private
   def password_required?

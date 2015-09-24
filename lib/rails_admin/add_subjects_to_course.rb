@@ -1,7 +1,7 @@
 module RailsAdmin
   module Config
     module Actions
-      class AddTraineeToCourse < RailsAdmin::Config::Actions::Base
+      class AddSubjectsToCourse < RailsAdmin::Config::Actions::Base
         RailsAdmin::Config::Actions.register(self)
 
         register_instance_option :visible? do
@@ -35,14 +35,14 @@ module RailsAdmin
         register_instance_option :controller do
           proc do
             @course = object
-            @trainees = User.free_trainees.push(object.users)
+            @subjects = Subject.all
             if request.post?
-              course_params = params.require(:course).permit user_ids: []
+              course_params = params.require(:course).permit subject_ids: []
               if object.update_attributes course_params
                 flash[:success] = flash_message "updated"
                 redirect_to show_course_path(Course, @course)
               else
-                render "add_trainee_to_course"
+                render "add_subjects_to_course"
                 flash[:danger] = flash_message "not_updated"
               end
             end

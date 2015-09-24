@@ -30,7 +30,9 @@ class Ability
       can :start_course_subject, Course
       can [:index, :show, :update], UserSubject
       can [:edit, :update], User, id: user.id
-      can :add_trainee_to_course, Course
+      can [:add_trainee_to_course, :add_subjects_to_course], Course do |course|
+        !course.finish?
+      end
       can :show_subject, Subject
     else
       can [:index, :show], Course

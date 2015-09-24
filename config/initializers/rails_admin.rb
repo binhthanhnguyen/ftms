@@ -5,6 +5,7 @@ require Rails.root.join("lib", "rails_admin", "show_course.rb")
 require Rails.root.join("lib", "rails_admin", "start_course_subject.rb")
 require Rails.root.join("lib", "rails_admin", "finish_course_subject.rb")
 require Rails.root.join("lib", "rails_admin", "add_trainee_to_course.rb")
+require Rails.root.join("lib", "rails_admin", "add_subjects_to_course.rb")
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ShowSubject)
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::StartCourse)
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::FinishCourse)
@@ -12,6 +13,7 @@ RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ShowCourse)
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::StartCourseSubject)
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::FinishCourseSubject)
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::AddTraineeToCourse)
+RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::AddSubjectsToCourse)
 
 RailsAdmin.config do |config|
 
@@ -54,6 +56,9 @@ RailsAdmin.config do |config|
       only Course
     end
     add_trainee_to_course do
+      only Course
+    end
+    add_subjects_to_course do
       only Course
     end
   end

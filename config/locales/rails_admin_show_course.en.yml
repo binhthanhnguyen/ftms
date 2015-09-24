@@ -26,6 +26,11 @@ en:
         btn: "Add Trainees"
       show_trainee:
         title: "Show Trainee info"
+      add_subjects_to_course:
+        title: "Add Subjects"
+        breadcrumb: "Subjects"
+        menu: "Add Subjects"
+        btn: "Add"
     tabs:
       overview: "Overview"
       members: "Members"
@@ -38,3 +43,6 @@ en:
     member:
       name: "Name"
       email: "Email"
+    subject:
+      name: "Name"
+      description: "Description"
