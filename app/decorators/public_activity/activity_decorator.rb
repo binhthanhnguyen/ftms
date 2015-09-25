@@ -63,7 +63,7 @@ class PublicActivity::ActivityDecorator < Draper::Decorator
     when "course_subject.create", "course_subject.destroy"
       parameters[:subject]
     when "user_task.create"
-      trackable.task
+      parameters[:task]
     else
       key
     end

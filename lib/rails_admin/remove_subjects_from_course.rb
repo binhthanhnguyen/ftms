@@ -1,11 +1,9 @@
 module RailsAdmin
   module Config
     module Actions
-      class AddSubjectsToCourse < RailsAdmin::Config::Actions::Base
-        RailsAdmin::Config::Actions.register(self)
-
+      class RemoveSubjectsFromCourse < RailsAdmin::Config::Actions::Base
         register_instance_option :visible? do
-          authorized? && bindings[:object].class == Course
+          authorized?
         end
 
         register_instance_option :member do
@@ -13,36 +11,43 @@ module RailsAdmin
         end
 
         register_instance_option :link_icon do
-          "icon-plus"
+          "icon-remove"
+        end
+
+        register_instance_option :pjax? do
+          true
         end
 
         register_instance_option :http_methods do
           [:get, :post]
         end
 
-        register_instance_option :pjax? do
-          false
+        register_instance_option :route_fragment do
+          custom_key.to_s
         end
 
         register_instance_option :action_name do
           custom_key.to_sym
         end
 
-        register_instance_option :route_fragment do
-          custom_key.to_s
+        register_instance_option :custom_key do
+          key
+        end
+
+        def key
+          self.class.key
         end
 
         register_instance_option :controller do
-          proc do
-            @course = object
-            @subjects = Subject.all
+          Proc do
+            @subjects = object.subjects
             if request.post?
               course_params = params.require(:course).permit subject_ids: []
               if object.update_attributes course_params
                 flash[:success] = t "admin.actions.updated"
                 redirect_to show_course_path(Course, object)
               else
-                render "add_subjects_to_course"
+                render "add_trainee_to_course"
                 flash[:danger] = t "admin.actions.not_updated"
               end
             end

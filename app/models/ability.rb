@@ -33,6 +33,9 @@ class Ability
       can [:add_trainee_to_course, :add_subjects_to_course], Course do |course|
         !course.finish?
       end
+      can :remove_subjects_from_course, Course do |course|
+        course.init?
+      end
       can :show_subject, Subject
     else
       can [:index, :show], Course
