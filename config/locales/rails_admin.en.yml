@@ -113,6 +113,10 @@ en:
         title: "History for %{model_label} '%{object_label}'"
         menu: "History"
         breadcrumb: "History"
+      edit_course:
+        title: "Edit %{model_label} '%{object_label}'"
+        menu: "Edit"
+        breadcrumb: "Edit"
     form:
       cancel: "Cancel"
       basic_info: "Basic info"

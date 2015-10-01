@@ -9,6 +9,8 @@ defaults: &defaults
   course_subject:
     finish: "finish"
     start: "progress"
+  form:
+    field_size: 50
 development:
   <<: *defaults
   neat_setting: 800

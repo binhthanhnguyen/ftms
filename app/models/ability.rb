@@ -34,6 +34,7 @@ class Ability
         !course.finish?
       end
       can :show_subject, Subject
+      can :edit_course, Course
     else
       can [:index, :show], Course
       can [:index, :show], Subject
